@@ -1,0 +1,36 @@
+@page "/qcmtest"
+
+@using blazorQCMTest.Data;
+@using System.Text.Json;
+
+<PageTitle>QCM Test</PageTitle>
+<button @onclick="OnGenerateButtonClick">Generate Json</button>
+<button @onclick="OnLoadButtonClick">Load Json</button>
+
+<p></p>
+
+@code {
+    protected List<QCMQuestion> Questions;
+
+    void OnGenerateButtonClick() {
+        Questions = new List<QCMQuestion>();
+
+        Questions.Add(new QCMQuestion() { id=1, question="Question", typeQuestion=QCMQuestionType.qcu, choix = new List<string>() {"choix 1", "choix 2"}  });
+
+        string jsonString = JsonSerializer.Serialize(Questions, new JsonSerializerOptions() { WriteIndented = true});
+        using (StreamWriter outputFile = new StreamWriter("dataReady.json"))
+        {
+            outputFile.WriteLine(jsonString);
+        }
+    }
+
+    void OnLoadButtonClick() {
+        Questions = new List<QCMQuestion>();
+    
+        using (StreamReader r = new StreamReader("dataReady.json"))
+        {
+            string json = r.ReadToEnd();
+            Questions = JsonSerializer.Deserialize<List<QCMQuestion>>(json);
+        }
+    }
+}

@@ -1,0 +1,32 @@
+[
+  {
+    "id": 1,
+    "question": "Question 01",
+    "typeQuestion": 0,
+    "choix": [
+      "choix 1",
+      "choix 2"
+    ],
+    "reponses": null
+  },
+  {
+    "id": 2,
+    "question": "Question 02",
+    "typeQuestion": 0,
+    "choix": [
+      "choix 1",
+      "choix 2"
+    ],
+    "reponses": null
+  },
+  {
+    "id": 3,
+    "question": "Question 03",
+    "typeQuestion": 0,
+    "choix": [
+      "choix 1",
+      "choix 2"
+    ],
+    "reponses": null
+  }
+]
